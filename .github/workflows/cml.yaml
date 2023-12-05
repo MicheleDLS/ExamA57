@@ -14,4 +14,7 @@ jobs:
           pip install -r requirements.txt
           python Pointure_GaussianNB.py
 <
-    
+        name: Commit report
+        run: |
+          git commit -m "pousser vers github repository"
+          git push
