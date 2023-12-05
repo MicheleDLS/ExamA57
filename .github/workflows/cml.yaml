@@ -24,4 +24,4 @@ jobs:
 
       - name: Run MLflow script
         run: |
-          python Pointure_GaussianNB.py
+          python Pointure_GaussianNB.ipnb
