@@ -25,3 +25,12 @@ jobs:
       - name: Run MLflow script
         run: |
           python Pointure_GaussianNB.ipynb
+          # Ecrire le CML rapport
+          echo "## Metriques:" >> rapport.md
+          cat metrics.txt >> rapport.md
+
+      - name: Commit rapport
+        run: |
+          git add rapport.md metrics.txt modele.txt
+          git commit -am "sauvegarde des rapport"
+          git push
