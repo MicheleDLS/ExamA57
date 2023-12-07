@@ -5,26 +5,36 @@ permissions:
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
       - name: Checkout code
-        env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Installe environnement   
         run: |
           #installe environnement
           pip install -r requirements.txt
-          python Pointure_GaussianNB.ipynb
+
+      - name: Run script
+        run: python Pointure_GaussianNB.ipynb    
+
+      - name: Ecrire le rapport
+        run: |
           # Ecrire le rapport
           echo "## Metriques:" >> rapport.md
           cat metrics.txt >> rapport.md
           echo "## Modele:" >> rapport.md
           cat modele.txt >> rapport.md
+
+        - name: Commit et push
+        run: |
           # Commit sur git 
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
           git add rapport.md metrics.txt modele.txt
           git commit -m "sauvegarde des rapports"
-          git pull --rebase origin master
-          git rebase --continue
           git push origin HEAD:master
