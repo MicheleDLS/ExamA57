@@ -20,7 +20,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run script
-        run: python Pointure_GaussianNB.ipynb    
+        run: |
+          python Pointure_GaussianNB.ipynb    
 
       - name: Ecrire le rapport
         run: |
