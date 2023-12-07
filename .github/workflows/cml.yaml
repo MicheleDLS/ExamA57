@@ -7,19 +7,19 @@ on:
 
 jobs:
   run:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     container: docker://dvcorg/cml-py3:latest
+    env:
+      repo_token: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - name: cml_run
-        env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Installe dependances
         run: |
           pip install -r requirements.txt
 
-      - name: cml_run
+      - name: Run ML et rapport
         run: |
           python Pointure_GaussianNB.ipynb
           # Ecrire le CML rapport
@@ -30,7 +30,6 @@ jobs:
         run: |
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
-          #git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add rapport.md metrics.txt modele.txt prediction.txt
-          git commit -am "sauvegarde des rapport"
+          git commit -m "sauvegarde des rapports"
           git push
