@@ -28,4 +28,5 @@ jobs:
           git add rapport.md metrics.txt modele.txt prediction.txt
           git commit -m "sauvegarde des rapports"
           git pull --rebase origin master
+          git rebase --continue
           git push origin HEAD:master
