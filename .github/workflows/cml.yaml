@@ -15,7 +15,7 @@ jobs:
           python-version: 3.8
       - name: WORKFLOW
         run: |
-          #installe environnement
+          # Installe environnement
           pip install -r requirements.txt
           python Pointure_GaussianNB.ipynb
           # Ecrire le rapport
