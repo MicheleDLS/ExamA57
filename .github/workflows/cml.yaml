@@ -32,5 +32,5 @@ jobs:
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
           git add rapport.md $metrics_filename $modele_filename
           git commit -m "sauvegarde des rapports"
-          git pull --rebase origin master
+          git pull --rebase origin
           git push origin HEAD
