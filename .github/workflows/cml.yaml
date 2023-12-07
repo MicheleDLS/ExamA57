@@ -1,9 +1,6 @@
 name: MLflow Workflow
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 permissions:
   contents: write
