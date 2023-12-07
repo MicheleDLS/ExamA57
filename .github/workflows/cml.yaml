@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        - name: Run ML et rapport
+      - name: Run ML et rapport
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: 
