@@ -6,23 +6,20 @@ on:
       - main
 
 jobs:
-  mlflow_run:
-    runs-on: ubuntu-latest
-
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: cml_run
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-
-      - name: Install dependencies
+      - name: Installe dependances
         run: |
           pip install -r requirements.txt
 
-      - name: Run MLflow script
+      - name: cml_run
         run: |
           python Pointure_GaussianNB.ipynb
           # Ecrire le CML rapport
@@ -34,6 +31,6 @@ jobs:
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
           #git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git add rapport.md metrics.txt modele.txt
+          git add rapport.md metrics.txt modele.txt prediction.txt
           git commit -am "sauvegarde des rapport"
           git push
