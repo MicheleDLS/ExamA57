@@ -7,9 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     container: docker://dvcorg/cml-py3:latest
     steps:
+      - uses: actions/checkout@v2
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run ML et rapport
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: 
