@@ -15,7 +15,7 @@ jobs:
           #installe environnement
           pip install -r requirements.txt
           python Pointure_GaussianNB.ipynb
-          # Ecrire le CML rapport
+          # Ecrire le rapport
           echo "## Metriques:" >> rapport.md
           cat metrics.txt >> rapport.md
           echo "## Modele:" >> rapport.md
