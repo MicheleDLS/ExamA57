@@ -29,6 +29,7 @@ jobs:
         run: |
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
+          #git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add rapport.md metrics.txt modele.txt prediction.txt
-          git commit -m "sauvegarde des rapports"
+          git commit -am "sauvegarde des rapports"
           git push
