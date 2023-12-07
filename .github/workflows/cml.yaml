@@ -17,16 +17,20 @@ jobs:
         run: |
           # Installe environnement
           pip install -r requirements.txt
+          # Exécuter le script Python et obtenir le timestamp
+          timestamp=$(date +"%Y%m%d_%H%M%S")
           python Pointure_GaussianNB.ipynb
           # Ecrire le rapport
+          # Utiliser le timestamp pour les noms de fichiers
+          rapport_filename="rapport_${timestamp}.md"
           echo "## Metriques:" >> rapport.md
-          cat metrics.txt >> rapport.md
+          cat $metrics_filename >> rapport.md
           echo "## Modele:" >> rapport.md
-          cat modele.txt >> rapport.md
+          cat $modele_filename >> rapport.md
           # Commit sur git 
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
-          git add rapport.md metrics.txt modele.txt
+          git add rapport.md $metrics_filename $modele_filename
           git commit -m "sauvegarde des rapports"
           git pull --rebase origin master
-          git push origin HEAD:actions-results
+          git push origin HEAD
