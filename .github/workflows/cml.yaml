@@ -27,6 +27,6 @@ jobs:
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
           git add rapport.md metrics.txt modele.txt
-          git pull
           git commit -m "sauvegarde des rapports"
+          git pull -- rabse origin master
           git push origin HEAD:master
