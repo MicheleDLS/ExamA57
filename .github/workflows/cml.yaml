@@ -17,8 +17,8 @@ jobs:
       - name: Run ML et rapport
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python -m pip install --upgrade pip
+        run: 
+          #installe environnement
           pip install -r requirements.txt
           python Pointure_GaussianNB.ipynb
           # Ecrire le CML rapport
@@ -28,6 +28,7 @@ jobs:
           cat modele.txt >> rapport.md
           echo "## Prediction:" >> rapport.md
           cat prediction.txt >> rapport.md
+          #commit sur git 
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
           git add rapport.md metrics.txt modele.txt prediction.txt
