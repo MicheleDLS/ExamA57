@@ -1,9 +1,8 @@
 name: MLflow Workflow
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
+permissions:
+  contents: write
 
 jobs:
   run:
@@ -24,12 +23,12 @@ jobs:
           # Ecrire le CML rapport
           echo "## Metriques:" >> rapport.md
           cat metrics.txt >> rapport.md
-
-      - name: Commit rapport
-        run: |
+          echo "## Modele:" >> rapport.md
+          cat modele.txt >> rapport.md
+          echo "## Prediction:" >> rapport.md
+          cat prediction.txt >> rapport.md
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add rapport.md metrics.txt modele.txt prediction.txt
-          git commit -am "sauvegarde des rapports"
-          git push
+          git commit -m "sauvegarde des rapports"
+          git push origin HEAD:master
