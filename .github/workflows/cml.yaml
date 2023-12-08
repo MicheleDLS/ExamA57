@@ -27,7 +27,7 @@ jobs:
           rapport = "output/rapport_${timestamp}.md"
           echo "## Metriques:" >> $rapport
           cat metrics.txt >> $rapport
-          echo "## Modele:" >> $rapport.md
+          echo "## Modele:" >> $rapport
           cat modele.txt >> $rapport
           # Commit sur git 
           git config --global user.name 'MicheleDLS'
