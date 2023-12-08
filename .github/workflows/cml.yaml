@@ -20,6 +20,7 @@ jobs:
           timestamp=$(date +"%Y%m%d_%H%M")
           python Pointure_GaussianNB.ipynb
           ls -R
+          pwd
           # Ecrire le rapport
           # Utiliser le timestamp pour le rapport
           rapport="output/rapport_${timestamp}.md"
