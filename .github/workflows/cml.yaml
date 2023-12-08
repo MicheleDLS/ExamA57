@@ -17,20 +17,22 @@ jobs:
         run: |
           # Installe environnement
           pip install -r requirements.txt
+          # Cree le dossier output
+          mkdir -p output
           # Exécuter le script Python et obtenir le timestamp
-          timestamp=$(date +"%Y%m%d_%H%M%S")
+          timestamp=$(date + "%Y_%m_%d-%I_%M")
           python Pointure_GaussianNB.ipynb
           # Ecrire le rapport
-          # Utiliser le timestamp pour les noms de fichiers
-          rapport_filename="rapport_${timestamp}.md"
-          echo "## Metriques:" >> rapport.md
-          cat $metrics_filename >> rapport.md
-          echo "## Modele:" >> rapport.md
-          cat $modele_filename >> rapport.md
+          # Utiliser le timestamp pour le rapport
+          rapport = "output/rapport_${timestamp}.md"
+          echo "## Metriques:" >> $rapport
+          cat output/metrics_${timestamp}.txt >> $rapport
+          echo "## Modele:" >> $rapport.md
+          cat output/modele_${timestamp}.txt >> $rapport
           # Commit sur git 
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
-          git add rapport.md $metrics_filename $modele_filename
+          git add $rapport output/metrics_${timestamp}.txt output/modele_${timestamp}.txt
           git commit -m "sauvegarde des rapports"
           git pull --rebase origin
           git push origin HEAD
