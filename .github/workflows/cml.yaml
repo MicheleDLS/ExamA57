@@ -8,12 +8,11 @@ jobs:
     container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: WORKFLOW
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          #Upgrade pip
-          /usr/bin/python3 -m pip install --upgrade pip
+          # Upgrade pip
+          python -m pip install --upgrade pip
           # Installe environnement
           pip install -r requirements.txt
           # Cree le dossier output
