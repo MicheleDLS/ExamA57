@@ -17,7 +17,7 @@ jobs:
           # Installe environnement
           pip install -r requirements.txt
           # Exécuter le script
-          python Pointure_GaussianNB.ipynb
+          python Pointure_GaussianNB02.py
           # Ecrire le rapport
           echo "## Metriques:" >> rapport.md
           cat metrics.txt >> rapport.md

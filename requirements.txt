@@ -3,5 +3,3 @@ scikit-learn
 matplotlib
 seaborn
 numpy
-datetime
-pathlib
