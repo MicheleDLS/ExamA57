@@ -12,6 +12,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: WORKFLOW
         run: |
+          #Upgrade pip
+          /usr/bin/python3 -m pip install --upgrade pip
           # Installe environnement
           pip install -r requirements.txt
           # Cree le dossier output
@@ -20,8 +22,10 @@ jobs:
           timestamp=$(date +"%Y%m%d_%H%M")
           python Pointure_GaussianNB.ipynb
           ls -R
+          echo "Current directory: $(pwd)"
           cd /github/workspace
-          pwd
+          pwd #
+          ls -R
           # Ecrire le rapport
           # Utiliser le timestamp pour le rapport
           rapport="output/rapport_${timestamp}.md"
