@@ -23,7 +23,7 @@ jobs:
           python Pointure_GaussianNB.ipynb
           ls -R
           echo "Current directory before cd: $(pwd)"
-          cd /github/workspace
+          cd $GITHUB_WORKSPACE
           echo "Current directory after cd: $(pwd)"
           ls -R
           # Ecrire le rapport
