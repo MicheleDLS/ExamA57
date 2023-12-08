@@ -25,14 +25,14 @@ jobs:
           # Ecrire le rapport
           # Utiliser le timestamp pour le rapport
           rapport = "output/rapport_${timestamp}.md"
-          echo "## Metriques:" >> $rapport
-          cat metrics.txt >> $rapport
-          echo "## Modele:" >> $rapport
-          cat modele.txt >> $rapport
+          echo "## Metriques:" >> ${rapport}
+          cat metrics.txt >> ${rapport}
+          echo "## Modele:" >> ${rapport}
+          cat modele.txt >> ${rapport}
           # Commit sur git 
           git config --global user.name 'MicheleDLS'
           git config --global user.email 'MicheleDLS@users.noreply.github.com'
-          git add $rapport metrics.txt modele.txt
+          git add ${rapport} metrics.txt modele.txt
           git commit -m "sauvegarde des rapports"
           git pull --rebase origin
           git push origin HEAD
