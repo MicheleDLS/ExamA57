@@ -24,7 +24,7 @@ jobs:
           python Pointure_GaussianNB.ipynb
           # Ecrire le rapport
           # Utiliser le timestamp pour le rapport
-          ${rapport} = "output/rapport_${timestamp}.md"
+          rapport="output/rapport_${timestamp}.md"
           echo "## Metriques:" >> ${rapport}
           cat ${metrics_file} >> ${rapport}
           echo "## Modele:" >> ${rapport}
