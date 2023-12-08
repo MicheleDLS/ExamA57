@@ -16,10 +16,11 @@ jobs:
           pip install -r requirements.txt
           # Cree le dossier output
           mkdir -p output
-          # Exécuter le script Python et obtenir le timestamp
+          # Exécuter le script
           timestamp=$(date +"%Y%m%d_%H%M")
           python Pointure_GaussianNB.ipynb
           ls -R
+          cd /github/workspace
           pwd
           # Ecrire le rapport
           # Utiliser le timestamp pour le rapport
