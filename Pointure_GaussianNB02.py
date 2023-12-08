@@ -22,9 +22,10 @@ X = df.iloc[:, lambda df: [1, 2, 3]]
 y = df.iloc[:, 0]
 from sklearn.model_selection import train_test_split
 
+
+#decomposer les donnees predicteurs en training/testing
 testSize = 0.2
 randomState = 44
-#decomposer les donnees predicteurs en training/testing
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=testSize, random_state=randomState)
 from sklearn.naive_bayes import GaussianNB
 gnb = GaussianNB()
