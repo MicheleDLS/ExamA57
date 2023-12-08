@@ -22,9 +22,9 @@ jobs:
           timestamp=$(date +"%Y%m%d_%H%M")
           python Pointure_GaussianNB.ipynb
           ls -R
-          echo "Current directory: $(pwd)"
+          echo "Current directory before cd: $(pwd)"
           cd /github/workspace
-          pwd #
+          echo "Current directory after cd: $(pwd)"
           ls -R
           # Ecrire le rapport
           # Utiliser le timestamp pour le rapport
