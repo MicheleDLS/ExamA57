@@ -19,6 +19,7 @@ jobs:
           pip install -r requirements.txt
           # Cree le dossier output
           mkdir -p output
+          ls -R
           # Exécuter le script Python et obtenir le timestamp
           timestamp=$(date +"%Y%m%d_%H%M")
           python Pointure_GaussianNB.ipynb
