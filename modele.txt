@@ -2,3 +2,5 @@ Test Size:  0.2
 Random State:  44.0 
 Test Size:  0.2 
 Random State:  44.0 
+Test Size:  0.2 
+Random State:  44.0 
